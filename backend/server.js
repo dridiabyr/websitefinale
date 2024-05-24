@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const userRoutes = require("./models/user.models");
 const restaurantRoutes = require("./models/restaurant.models");
-const orderRouter =require('./models/order.models')
+const orderRouter = require("./models/order.models");
 require("./config/mongoose.config");
-const reservationRouter=require('./models/reservation.models')
+const reservationRouter = require("./models/reservation.models");
+const Menurouter = require("./models/menu.models");
 
 const app = express();
 const port = process.env.PORT;
@@ -21,10 +22,10 @@ require("./routes/restaurant.routes")(app);
 require("./routes/table.routes")(app);
 
 app.use("/api/orders", orderRouter);
-
+app.use("api/menus", Menurouter);
 app.use("/api/restaurants", restaurantRoutes);
 
-app.use("/api/reservation" , reservationRouter)
+app.use("/api/reservation", reservationRouter);
 
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;

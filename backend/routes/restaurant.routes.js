@@ -8,7 +8,7 @@ const {
   authenticateRestaurator,
 } = require('../middelware/auth.middelware');
 
-// Apply authmiddleware globally to all routes in this router
+
 router.use(authmiddleware);
 
 // Define your routes with specific role checks
